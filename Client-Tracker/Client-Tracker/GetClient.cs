@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
 namespace Client_Tracker
 {
-    public partial class Form1 : Form
+    public partial class GetClient : UserControl
     {
-        public Form1()
+        public GetClient()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace Client_Tracker
 {
-    partial class Form1
+    partial class MainGui
     {
         /// <summary>
         /// Required designer variable.
