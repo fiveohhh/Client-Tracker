@@ -11,9 +11,11 @@ namespace Client_Tracker
 {
     public partial class WorkOnHold : UserControl
     {
-        public WorkOnHold()
+        public WorkOnHold(ClientActions actions)
         {
             InitializeComponent();
+            digitalDisplay1 = actions.GetDisplay();
+            lbl_name.Text = actions.GetClient().FullName;
         }
     }
 }

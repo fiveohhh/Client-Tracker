@@ -38,13 +38,13 @@
             this.lbl_name.AutoSize = true;
             this.lbl_name.Location = new System.Drawing.Point(3, 0);
             this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(35, 13);
+            this.lbl_name.Size = new System.Drawing.Size(38, 13);
             this.lbl_name.TabIndex = 0;
-            this.lbl_name.Text = "label1";
+            this.lbl_name.Text = "NAME";
             // 
             // btn_activate
             // 
-            this.btn_activate.Location = new System.Drawing.Point(186, 3);
+            this.btn_activate.Location = new System.Drawing.Point(137, 0);
             this.btn_activate.Name = "btn_activate";
             this.btn_activate.Size = new System.Drawing.Size(57, 23);
             this.btn_activate.TabIndex = 1;
@@ -71,7 +71,7 @@
             this.Controls.Add(this.btn_activate);
             this.Controls.Add(this.lbl_name);
             this.Name = "WorkOnHold";
-            this.Size = new System.Drawing.Size(246, 48);
+            this.Size = new System.Drawing.Size(203, 48);
             this.ResumeLayout(false);
             this.PerformLayout();
 

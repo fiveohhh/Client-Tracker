@@ -166,18 +166,10 @@ namespace DigitalClock
 		/// </summary>
 		public void Stop()
 		{
-			bFinished = true;
 			displayTimer.Enabled = false;
 		}
 
-        /// <summary>
-        /// pause display, but don't mark as finished
-        /// </summary>
-        public void Pause()
-        {
-            bFinished = false;
-            displayTimer.Enabled = false;
-        }
+
 
         public void Reset()
         {

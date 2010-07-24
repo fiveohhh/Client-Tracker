@@ -59,6 +59,12 @@
     <Compile Include="GetClient.Designer.cs">
       <DependentUpon>GetClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="HoldArea.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HoldArea.Designer.cs">
+      <DependentUpon>HoldArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainGui.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,12 +73,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkOnHold.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WorkOnHold.Designer.cs">
+      <DependentUpon>WorkOnHold.cs</DependentUpon>
+    </Compile>
     <Compile Include="XMLClasses.cs" />
     <EmbeddedResource Include="ClientActions.resx">
       <DependentUpon>ClientActions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GetClient.resx">
       <DependentUpon>GetClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoldArea.resx">
+      <DependentUpon>HoldArea.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainGui.resx">
       <DependentUpon>MainGui.cs</DependentUpon>
@@ -86,6 +101,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="WorkOnHold.resx">
+      <DependentUpon>WorkOnHold.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -11,14 +11,40 @@ namespace Client_Tracker
 {
     public partial class ClientActions : UserControl
     {
+
+
+        Client Client;
         public ClientActions()
         {
             InitializeComponent();
             BindTypeOfWorkToComboBox();
             digitalDisplay1.CountDown = false;
-            
+            Enabled = false;
         }
 
+        /// <summary>
+        /// Set the client for this form
+        /// </summary>
+        /// <param name="client">client to work on</param>
+        public void SetClient(Client client)
+        {
+            Client = client;
+            Enabled = true;
+        }
+
+        /// <summary>
+        /// Get Client that this control is working with
+        /// </summary>
+        /// <returns></returns>
+        public Client GetClient()
+        {
+            return Client;
+        }
+
+        public DigitalClock.DigitalDisplay GetDisplay()
+        {
+            return this.digitalDisplay1;
+        }
 
         private void BindTypeOfWorkToComboBox()
         {
@@ -39,5 +65,13 @@ namespace Client_Tracker
         {
             digitalDisplay1.Reset();
         }
+
+        private void btn_pauseAndHold_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
     }
 }

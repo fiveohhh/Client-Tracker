@@ -32,18 +32,24 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.getClient1 = new Client_Tracker.GetClient();
+            this.holdArea1 = new Client_Tracker.HoldArea();
             this.clientActions1 = new Client_Tracker.ClientActions();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.optionsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(726, 24);
@@ -70,6 +76,7 @@
             // 
             // splitContainer2
             // 
+            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
@@ -78,23 +85,45 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.getClient1);
-            this.splitContainer2.Size = new System.Drawing.Size(202, 433);
-            this.splitContainer2.SplitterDistance = 239;
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.holdArea1);
+            this.splitContainer2.Size = new System.Drawing.Size(204, 435);
+            this.splitContainer2.SplitterDistance = 241;
             this.splitContainer2.TabIndex = 0;
             // 
             // getClient1
             // 
             this.getClient1.Location = new System.Drawing.Point(3, 3);
             this.getClient1.Name = "getClient1";
-            this.getClient1.Size = new System.Drawing.Size(194, 241);
+            this.getClient1.Size = new System.Drawing.Size(194, 233);
             this.getClient1.TabIndex = 0;
+            // 
+            // holdArea1
+            // 
+            this.holdArea1.AutoScroll = true;
+            this.holdArea1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.holdArea1.Location = new System.Drawing.Point(0, 0);
+            this.holdArea1.Name = "holdArea1";
+            this.holdArea1.Size = new System.Drawing.Size(202, 188);
+            this.holdArea1.TabIndex = 0;
             // 
             // clientActions1
             // 
-            this.clientActions1.Location = new System.Drawing.Point(16, 13);
+            this.clientActions1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clientActions1.Enabled = false;
+            this.clientActions1.Location = new System.Drawing.Point(0, 0);
             this.clientActions1.Name = "clientActions1";
-            this.clientActions1.Size = new System.Drawing.Size(490, 368);
+            this.clientActions1.Size = new System.Drawing.Size(516, 433);
             this.clientActions1.TabIndex = 0;
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.optionsToolStripMenuItem.Text = "options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // MainGui
             // 
@@ -106,11 +135,14 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainGui";
             this.Text = "Client Tracker";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -125,6 +157,8 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private GetClient getClient1;
         private ClientActions clientActions1;
+        private HoldArea holdArea1;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
     }
 }
 

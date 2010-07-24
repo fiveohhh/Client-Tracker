@@ -14,10 +14,27 @@ namespace Client_Tracker
         public List<Client> ClientList = new List<Client>();
         public MainGui()
         {
-            LoadData();
+            LoadData();// read client info from xml
             InitializeComponent();
             getClient1.SetClientList(ClientList);
-            
+
+            // subsribe to holdButton so we can move form to hold area
+            clientActions1.btn_pauseAndHold.Click += new EventHandler(btn_pauseAndHold_Click);
+            getClient1.ClientReady += new EventHandler(getClient1_ClientReady);
+        }
+
+        void getClient1_ClientReady(object sender, EventArgs e)
+        {
+            Client c = (Client)sender;
+            clientActions1 = new ClientActions();
+            clientActions1.SetClient(c);
+        }
+
+        void btn_pauseAndHold_Click(object sender, EventArgs e)
+        {
+            holdArea1.AddClientActions(clientActions1);
+            clientActions1 = new ClientActions();
+            //clientActions1.Enabled = false;
         }
 
         // Loads data from XML files
@@ -44,6 +61,18 @@ namespace Client_Tracker
             // pull from work entries from list for each individual client
             // do something with orphaned entries?
            // throw new NotImplementedException();
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (clientActions1.Enabled)
+            {
+                clientActions1.Enabled = false;
+            }
+            else
+            {
+                clientActions1.Enabled = true;
+            }
         }
     }
 }
