@@ -1,0 +1,8 @@
+F:\git\Client-Tracker\Client-Tracker\Client-Tracker\DigitalClock\bin\Debug\DigitalClock.dll
+F:\git\Client-Tracker\Client-Tracker\Client-Tracker\DigitalClock\bin\Debug\DigitalClock.pdb
+F:\git\Client-Tracker\Client-Tracker\Client-Tracker\DigitalClock\obj\Debug\ResolveAssemblyReference.cache
+F:\git\Client-Tracker\Client-Tracker\Client-Tracker\DigitalClock\obj\Debug\DigitalClock.DigitalDisplay.resources
+F:\git\Client-Tracker\Client-Tracker\Client-Tracker\DigitalClock\obj\Debug\ResGen.read.1.tlog
+F:\git\Client-Tracker\Client-Tracker\Client-Tracker\DigitalClock\obj\Debug\ResGen.write.1.tlog
+F:\git\Client-Tracker\Client-Tracker\Client-Tracker\DigitalClock\obj\Debug\DigitalClock.dll
+F:\git\Client-Tracker\Client-Tracker\Client-Tracker\DigitalClock\obj\Debug\DigitalClock.pdb

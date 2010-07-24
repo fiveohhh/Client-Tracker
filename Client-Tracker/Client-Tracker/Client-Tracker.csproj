@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientActions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ClientActions.Designer.cs">
+      <DependentUpon>ClientActions.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientAndStampClasses.cs" />
     <Compile Include="GetClient.cs">
       <SubType>UserControl</SubType>
@@ -62,6 +68,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XMLClasses.cs" />
+    <EmbeddedResource Include="ClientActions.resx">
+      <DependentUpon>ClientActions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GetClient.resx">
       <DependentUpon>GetClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +95,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="DigitalClock\DigitalClock.csproj">
+      <Project>{9FD940F0-40FB-4533-997F-614DD22219EA}</Project>
+      <Name>DigitalClock</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

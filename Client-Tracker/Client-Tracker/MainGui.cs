@@ -16,9 +16,11 @@ namespace Client_Tracker
         {
             LoadData();
             InitializeComponent();
+            getClient1.SetClientList(ClientList);
             
         }
 
+        // Loads data from XML files
         private void LoadData()
         {
           //  LoadWorkEntries();
