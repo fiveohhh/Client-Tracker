@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Client_Tracker
 {
@@ -53,10 +54,24 @@ namespace Client_Tracker
         /// </summary>
         private List<string> Notes;
 
-        public Client(string firstName, string LastName)
+        public Client(string firstName, string lastName)
         {
+            FirstName = firstName;
+            LastName = lastName;
             AllWorkDone = new List<WorkEntry>();
             Notes = new List<string>();
+        }
+
+        public string FullName
+        {
+            get
+            {
+                return LastName + ", " + FirstName;
+            }
+            set
+            {
+                throw new Exception("Cannot set Full Name");
+            }
         }
 
         public void AddWorkEntry(WorkEntry workEntry, ClientTrackerUser user)
@@ -85,8 +100,28 @@ namespace Client_Tracker
     }
 
     /// <summary>
+    /// Helper function
+    /// Used to serialize and deserialize client info
+    /// </summary>
+    public class ClientData
+    {
+        public string FirstName { get; set; }
+        public string Lastname { get; set; }
+        public List<string> Notes { get; set; }
+        public List<WorkEntry> WorkDone { get; set; }
+        public ClientData(string firstName, string lastName, List<string> notes, List<WorkEntry> workDone)
+        {
+            FirstName = firstName;
+            Lastname = lastName;
+            Notes = notes;
+            WorkDone = workDone;
+        }
+    }
+
+    /// <summary>
     /// an entry for work done.
     /// </summary>
+    [Serializable()]
     public class WorkEntry
     {
         /// <summary>

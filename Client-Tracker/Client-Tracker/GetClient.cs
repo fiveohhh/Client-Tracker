@@ -11,9 +11,17 @@ namespace Client_Tracker
 {
     public partial class GetClient : UserControl
     {
-        public GetClient()
+        List<Client> Clients; 
+        public GetClient(List<Client> clients)
         {
+            Clients = clients;
             InitializeComponent();
+            BindingSource bs = new BindingSource(Clients,null);
+            comboBox1.DataSource = bs.DataSource;
+
+            comboBox1.DisplayMember = "FullName";
+            
+            
         }
     }
 }
