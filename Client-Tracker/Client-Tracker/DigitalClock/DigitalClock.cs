@@ -47,7 +47,7 @@ namespace DigitalClock
 		{
 			get
 			{
-				return strMinutes;
+				return nMinutes.ToString();
 			}
 			set
 			{
@@ -64,7 +64,7 @@ namespace DigitalClock
 		{
 			get
 			{
-				return strSeconds;
+				return nSeconds.ToString();
 			}
 			set
 			{
@@ -81,7 +81,7 @@ namespace DigitalClock
 		{
 			get
 			{
-				return strHours;
+				return nHours.ToString();
 			}
 			set
 			{
@@ -173,15 +173,14 @@ namespace DigitalClock
 
         public void Reset()
         {
-
             nSeconds = 0;
             nMinutes = 0;
             nHours = 0;
             strSeconds = "00";
             strMinutes = "00";
             strHours = "00";
+            this.Invalidate();
         }
-        
 
 
 		public DigitalDisplay()

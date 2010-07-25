@@ -33,12 +33,13 @@
             this.btn_stopTime = new System.Windows.Forms.Button();
             this.btn_StartTime = new System.Windows.Forms.Button();
             this.grpBox_notes = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBox_notes = new System.Windows.Forms.TextBox();
             this.btn_submitEntry = new System.Windows.Forms.Button();
             this.btn_pauseAndHold = new System.Windows.Forms.Button();
             this.grpBox_typeOfWork = new System.Windows.Forms.GroupBox();
             this.cmbBox_typeOfWorkDone = new System.Windows.Forms.ComboBox();
             this.digitalDisplay1 = new DigitalClock.DigitalDisplay();
+            this.lbl_clientName = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.grpBox_notes.SuspendLayout();
             this.grpBox_typeOfWork.SuspendLayout();
@@ -88,7 +89,7 @@
             // 
             // grpBox_notes
             // 
-            this.grpBox_notes.Controls.Add(this.textBox1);
+            this.grpBox_notes.Controls.Add(this.txtBox_notes);
             this.grpBox_notes.Location = new System.Drawing.Point(9, 182);
             this.grpBox_notes.Name = "grpBox_notes";
             this.grpBox_notes.Size = new System.Drawing.Size(291, 131);
@@ -96,13 +97,13 @@
             this.grpBox_notes.TabStop = false;
             this.grpBox_notes.Text = "Notes";
             // 
-            // textBox1
+            // txtBox_notes
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 19);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(279, 106);
-            this.textBox1.TabIndex = 0;
+            this.txtBox_notes.Location = new System.Drawing.Point(6, 19);
+            this.txtBox_notes.Multiline = true;
+            this.txtBox_notes.Name = "txtBox_notes";
+            this.txtBox_notes.Size = new System.Drawing.Size(279, 106);
+            this.txtBox_notes.TabIndex = 0;
             // 
             // btn_submitEntry
             // 
@@ -121,7 +122,6 @@
             this.btn_pauseAndHold.TabIndex = 3;
             this.btn_pauseAndHold.Text = "Pause and Move to Hold";
             this.btn_pauseAndHold.UseVisualStyleBackColor = true;
-            this.btn_pauseAndHold.Click += new System.EventHandler(this.btn_pauseAndHold_Click);
             // 
             // grpBox_typeOfWork
             // 
@@ -154,10 +154,20 @@
             this.digitalDisplay1.TabIndex = 5;
             this.digitalDisplay1.UseWindowColours = false;
             // 
+            // lbl_clientName
+            // 
+            this.lbl_clientName.AutoSize = true;
+            this.lbl_clientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_clientName.Location = new System.Drawing.Point(313, 25);
+            this.lbl_clientName.Name = "lbl_clientName";
+            this.lbl_clientName.Size = new System.Drawing.Size(0, 29);
+            this.lbl_clientName.TabIndex = 6;
+            // 
             // ClientActions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbl_clientName);
             this.Controls.Add(this.digitalDisplay1);
             this.Controls.Add(this.grpBox_typeOfWork);
             this.Controls.Add(this.btn_pauseAndHold);
@@ -171,6 +181,7 @@
             this.grpBox_notes.PerformLayout();
             this.grpBox_typeOfWork.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -180,12 +191,13 @@
         private System.Windows.Forms.Button btn_stopTime;
         private System.Windows.Forms.Button btn_StartTime;
         private System.Windows.Forms.GroupBox grpBox_notes;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBox_notes;
         private System.Windows.Forms.Button btn_submitEntry;
         public System.Windows.Forms.Button btn_pauseAndHold;
         private System.Windows.Forms.GroupBox grpBox_typeOfWork;
         private System.Windows.Forms.ComboBox cmbBox_typeOfWorkDone;
         private DigitalClock.DigitalDisplay digitalDisplay1;
         private System.Windows.Forms.Button btn_reset;
+        private System.Windows.Forms.Label lbl_clientName;
     }
 }

@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace Client_Tracker
 {
-    public partial class ClientActions : UserControl
+    public partial class ClientActions : UserControl 
     {
 
-
+        DateTime StartTime;
         Client Client;
         public ClientActions()
         {
@@ -20,6 +20,45 @@ namespace Client_Tracker
             BindTypeOfWorkToComboBox();
             digitalDisplay1.CountDown = false;
             Enabled = false;
+        }
+
+        public void StopTimer()
+        {
+            digitalDisplay1.Stop();
+        }
+
+        public TimeSpan GetElapsedTime()
+        {
+            TimeSpan ts = new TimeSpan(int.Parse(digitalDisplay1.Hours), int.Parse(digitalDisplay1.Minutes), int.Parse(digitalDisplay1.Seconds));
+            return ts;
+        }
+
+        public DateTime GetStartTime()
+        {
+            return StartTime;
+        }
+
+        public string GetNotes()
+        {
+            return txtBox_notes.Text;
+        }
+
+        public TypesOfWork GetTypeOfWork()
+        {
+            return (TypesOfWork)cmbBox_typeOfWorkDone.SelectedValue;
+        }
+
+        /// <summary>
+        /// Resets control back to virgin state
+        /// </summary>
+        public void ResetControlData()
+        {
+            Client = null;
+            digitalDisplay1.Stop();
+            digitalDisplay1.Reset();
+
+            lbl_clientName.Text = string.Empty;
+            txtBox_notes.Text = string.Empty;
         }
 
         /// <summary>
@@ -30,6 +69,8 @@ namespace Client_Tracker
         {
             Client = client;
             Enabled = true;
+            StartTime = DateTime.Now;
+            lbl_clientName.Text = Client.LastName;
         }
 
         /// <summary>
@@ -66,10 +107,7 @@ namespace Client_Tracker
             digitalDisplay1.Reset();
         }
 
-        private void btn_pauseAndHold_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
        
 

@@ -26,15 +26,22 @@ namespace Client_Tracker
         void getClient1_ClientReady(object sender, EventArgs e)
         {
             Client c = (Client)sender;
-            clientActions1 = new ClientActions();
+            
             clientActions1.SetClient(c);
         }
 
         void btn_pauseAndHold_Click(object sender, EventArgs e)
         {
+            
+            clientActions1.StopTimer();
+
+            // add current clientActions to hold area
             holdArea1.AddClientActions(clientActions1);
-            clientActions1 = new ClientActions();
-            //clientActions1.Enabled = false;
+
+            clientActions1.ResetControlData();
+            //clientActions1 = new ClientActions();
+
+            clientActions1.Enabled = false;
         }
 
         // Loads data from XML files
@@ -74,5 +81,9 @@ namespace Client_Tracker
                 clientActions1.Enabled = true;
             }
         }
+
+   
+
+     
     }
 }

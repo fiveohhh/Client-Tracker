@@ -11,11 +11,17 @@ namespace Client_Tracker
 {
     public partial class WorkOnHold : UserControl
     {
+        HoldData data;
         public WorkOnHold(ClientActions actions)
         {
+            data = new HoldData(actions);
             InitializeComponent();
-            digitalDisplay1 = actions.GetDisplay();
-            lbl_name.Text = actions.GetClient().FullName;
+            lbl_name.Text = data.Client.FullName;
+           
+        }
+
+        private void btn_activate_Click(object sender, EventArgs e)
+        {
         }
     }
 }

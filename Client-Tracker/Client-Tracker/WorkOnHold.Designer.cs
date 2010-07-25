@@ -30,13 +30,12 @@
         {
             this.lbl_name = new System.Windows.Forms.Label();
             this.btn_activate = new System.Windows.Forms.Button();
-            this.digitalDisplay1 = new DigitalClock.DigitalDisplay();
             this.SuspendLayout();
             // 
             // lbl_name
             // 
             this.lbl_name.AutoSize = true;
-            this.lbl_name.Location = new System.Drawing.Point(3, 0);
+            this.lbl_name.Location = new System.Drawing.Point(3, 6);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(38, 13);
             this.lbl_name.TabIndex = 0;
@@ -50,28 +49,16 @@
             this.btn_activate.TabIndex = 1;
             this.btn_activate.Text = "Activate";
             this.btn_activate.UseVisualStyleBackColor = true;
-            // 
-            // digitalDisplay1
-            // 
-            this.digitalDisplay1.CountDown = true;
-            this.digitalDisplay1.Hours = "00";
-            this.digitalDisplay1.Location = new System.Drawing.Point(6, 16);
-            this.digitalDisplay1.Minutes = "00";
-            this.digitalDisplay1.Name = "digitalDisplay1";
-            this.digitalDisplay1.Seconds = "00";
-            this.digitalDisplay1.Size = new System.Drawing.Size(94, 30);
-            this.digitalDisplay1.TabIndex = 2;
-            this.digitalDisplay1.UseWindowColours = false;
+            this.btn_activate.Click += new System.EventHandler(this.btn_activate_Click);
             // 
             // WorkOnHold
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.digitalDisplay1);
             this.Controls.Add(this.btn_activate);
             this.Controls.Add(this.lbl_name);
             this.Name = "WorkOnHold";
-            this.Size = new System.Drawing.Size(203, 48);
+            this.Size = new System.Drawing.Size(203, 27);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,6 +68,5 @@
 
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.Button btn_activate;
-        private DigitalClock.DigitalDisplay digitalDisplay1;
     }
 }

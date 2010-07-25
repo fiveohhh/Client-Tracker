@@ -42,12 +42,12 @@ namespace Client_Tracker
                 
             }
 
-
+            // need to tell main gui we have a client ready to load
             if (ClientReady != null)
             {
                 ClientReady(desiredClient,null);
             }
-            // need to tell main gui we have a client ready to load
+            
         }
     }
 }

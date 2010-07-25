@@ -24,10 +24,12 @@ namespace Client_Tracker
             int i = WorkOnHoldLst.Count;
             WorkOnHold work = new WorkOnHold(ca);
             WorkOnHoldLst.Add(work);
+            this.Controls.Add(work);
+            
             work.Location = new Point(0, i * work.Height);
+            work.Visible = true;
             work.Show();
-            
-            
+            work.Refresh();
         }
 
        

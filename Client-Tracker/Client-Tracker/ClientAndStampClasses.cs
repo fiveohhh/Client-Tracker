@@ -160,6 +160,27 @@ namespace Client_Tracker
 
     }
 
+    /// <summary>
+    /// Holds data while Client is in hold area.
+    /// </summary>
+    public class HoldData
+    {
+        public Client Client { get; private set; }
+        public TimeSpan ElapsedTime { get; private set; }
+        public DateTime StartTime { get; private set; }
+        public string Notes { get; private set; }
+        public TypesOfWork WorkType { get; private set; }
+
+        public HoldData(ClientActions ca)
+        {
+            Client = ca.GetClient();
+            ElapsedTime = ca.GetElapsedTime();
+            StartTime = ca.GetStartTime();
+            Notes = ca.GetNotes();
+            WorkType = ca.GetTypeOfWork();
+        }
+    }
+
     public enum TypesOfWork
     {
         NOTSPECIFIED, PHONE, IN_OFFICE, COURT
