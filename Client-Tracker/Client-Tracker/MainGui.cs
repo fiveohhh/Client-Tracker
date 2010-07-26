@@ -21,6 +21,25 @@ namespace Client_Tracker
             // subsribe to holdButton so we can move form to hold area
             clientActions1.btn_pauseAndHold.Click += new EventHandler(btn_pauseAndHold_Click);
             getClient1.ClientReady += new EventHandler(getClient1_ClientReady);
+
+            holdArea1.ActivateClient += new EventHandler(holdArea1_ActivateClient);
+        }
+
+        void holdArea1_ActivateClient(object sender, EventArgs e)
+        {
+            WorkOnHold w = (WorkOnHold)sender;
+
+            // move to active area
+            clientActions1.LoadHoldData(w.GetHoldData());
+            clientActions1.Invalidate();
+
+            // remove from hold area
+            holdArea1.Controls.Remove(w);
+
+ 
+
+            // move from hold area to active area
+            //throw new NotImplementedException();
         }
 
         void getClient1_ClientReady(object sender, EventArgs e)

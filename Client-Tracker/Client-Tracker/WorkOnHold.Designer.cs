@@ -49,7 +49,6 @@
             this.btn_activate.TabIndex = 1;
             this.btn_activate.Text = "Activate";
             this.btn_activate.UseVisualStyleBackColor = true;
-            this.btn_activate.Click += new System.EventHandler(this.btn_activate_Click);
             // 
             // WorkOnHold
             // 
@@ -67,6 +66,6 @@
         #endregion
 
         private System.Windows.Forms.Label lbl_name;
-        private System.Windows.Forms.Button btn_activate;
+        public System.Windows.Forms.Button btn_activate;
     }
 }

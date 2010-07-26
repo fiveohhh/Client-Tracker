@@ -13,6 +13,8 @@ namespace Client_Tracker
     {
         List<WorkOnHold> WorkOnHoldLst;
 
+        public event EventHandler ActivateClient;
+
         public HoldArea()
         {
             WorkOnHoldLst = new List<WorkOnHold>();
@@ -25,12 +27,25 @@ namespace Client_Tracker
             WorkOnHold work = new WorkOnHold(ca);
             WorkOnHoldLst.Add(work);
             this.Controls.Add(work);
-            
+            work.btn_activate.Click += new EventHandler(btn_activate_Click);
             work.Location = new Point(0, i * work.Height);
             work.Visible = true;
             work.Show();
             work.Refresh();
         }
+
+        void btn_activate_Click(object sender, EventArgs e)
+        {
+            // get work on hold from parent control of button.
+            WorkOnHold w = (WorkOnHold)(((Control)sender).Parent);
+            if (ActivateClient != null)
+            {
+                // pass back Client data
+                ActivateClient(w, null);
+            }
+        }
+
+
 
        
     }

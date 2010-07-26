@@ -17,11 +17,11 @@ namespace Client_Tracker
             data = new HoldData(actions);
             InitializeComponent();
             lbl_name.Text = data.Client.FullName;
-           
         }
 
-        private void btn_activate_Click(object sender, EventArgs e)
+        public HoldData GetHoldData()
         {
+            return data;
         }
     }
 }

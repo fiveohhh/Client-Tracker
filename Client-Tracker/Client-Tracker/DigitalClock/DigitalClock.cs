@@ -54,6 +54,7 @@ namespace DigitalClock
 				if( Int32.Parse( value ) > 0 )
 					CalculateFromMinutes( Int32.Parse( value ) );
 				strMinutes = value;
+                nMinutes = int.Parse(value);
 			}
 		}
 
@@ -71,6 +72,7 @@ namespace DigitalClock
 				if( Int32.Parse( value ) > 0 )
 					CalculateFromSeconds( Int32.Parse( value ) );
 				strSeconds = value;
+                nSeconds = int.Parse(value);
 			}
 		}
 
@@ -89,6 +91,18 @@ namespace DigitalClock
 				nHours = Int32.Parse( value );
 			}
 		}
+
+        /// <summary>
+        /// Set elapsed time.
+        /// </summary>
+        /// <param name="elapsed"></param>
+        public void SetElapasedTime(TimeSpan elapsed)
+        {
+            Hours = elapsed.Hours.ToString().PadLeft(2);
+            Minutes = elapsed.Minutes.ToString().PadLeft(2);
+            Seconds = elapsed.Seconds.ToString().PadLeft(2);
+            this.Invalidate();
+        }
 
 		/// <summary>
 		/// allow the default window colours to be used

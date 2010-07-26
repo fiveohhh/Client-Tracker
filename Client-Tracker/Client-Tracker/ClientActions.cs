@@ -56,9 +56,34 @@ namespace Client_Tracker
             Client = null;
             digitalDisplay1.Stop();
             digitalDisplay1.Reset();
+            cmbBox_typeOfWorkDone.SelectedIndex = 0;
 
             lbl_clientName.Text = string.Empty;
             txtBox_notes.Text = string.Empty;
+        }
+
+        public void LoadHoldData(HoldData holdData)
+        {
+            ResetControlData();
+
+            TimeSpan zero = new TimeSpan(0, 0, 0);
+            if (GetElapsedTime() != zero)
+            {
+                // if there is a client loaded with the timer started already
+                // We need to decide if we want to throw it away.  Probably will
+                // pop up verifying that user wants to throw current away with old one
+            }
+            else
+            {
+                Client = holdData.Client;
+                lbl_clientName.Text = Client.FullName;
+                cmbBox_typeOfWorkDone.SelectedItem = holdData.WorkType;
+                txtBox_notes.Text = holdData.Notes;
+                StartTime = holdData.StartTime;
+                digitalDisplay1.SetElapasedTime(holdData.ElapsedTime);
+                this.Enabled = true;
+                this.Invalidate();
+            }
         }
 
         /// <summary>
@@ -70,7 +95,7 @@ namespace Client_Tracker
             Client = client;
             Enabled = true;
             StartTime = DateTime.Now;
-            lbl_clientName.Text = Client.LastName;
+            lbl_clientName.Text = Client.FullName;
         }
 
         /// <summary>
