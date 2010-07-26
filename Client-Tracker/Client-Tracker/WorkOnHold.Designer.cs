@@ -43,7 +43,7 @@
             // 
             // btn_activate
             // 
-            this.btn_activate.Location = new System.Drawing.Point(137, 0);
+            this.btn_activate.Location = new System.Drawing.Point(131, 0);
             this.btn_activate.Name = "btn_activate";
             this.btn_activate.Size = new System.Drawing.Size(57, 23);
             this.btn_activate.TabIndex = 1;
@@ -57,7 +57,7 @@
             this.Controls.Add(this.btn_activate);
             this.Controls.Add(this.lbl_name);
             this.Name = "WorkOnHold";
-            this.Size = new System.Drawing.Size(203, 27);
+            this.Size = new System.Drawing.Size(191, 27);
             this.ResumeLayout(false);
             this.PerformLayout();
 

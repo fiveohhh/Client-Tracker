@@ -1,2 +1,4 @@
-disable user list, and hold area(else make sure user wants to overwrite)?, when client window is active
+
 check for a user in the hold area when loading a client
+work on XML serialization and deserialization
+figure out how we want to do time.. round up to closest 7 mins?

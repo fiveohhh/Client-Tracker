@@ -53,6 +53,7 @@ namespace Client_Tracker
         /// </summary>
         public void ResetControlData()
         {
+            Enabled = false;
             Client = null;
             digitalDisplay1.Stop();
             digitalDisplay1.Reset();
@@ -72,6 +73,9 @@ namespace Client_Tracker
                 // if there is a client loaded with the timer started already
                 // We need to decide if we want to throw it away.  Probably will
                 // pop up verifying that user wants to throw current away with old one
+
+                // let's just make sure both the hold area and the select Client area are disabled unless the client area is empty
+                throw new Exception("Need to have a clear client actions before we load data");
             }
             else
             {
