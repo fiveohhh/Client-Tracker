@@ -163,6 +163,7 @@ namespace DigitalClock
 		public void Start()
 		{
 			bFinished = false;
+            
 
             if (displayTimer.Enabled)
             {
@@ -173,6 +174,7 @@ namespace DigitalClock
                 displayTimer.Interval = 1000;
                 displayTimer.Enabled = true;
             }
+            this.Invalidate();
 		}
 
 		/// <summary>
@@ -180,13 +182,38 @@ namespace DigitalClock
 		/// </summary>
 		public void Stop()
 		{
+            
 			displayTimer.Enabled = false;
+            this.Invalidate();
 		}
+
+        //default color is Red
+        Brush bColor = Brushes.Red;
+
+        public Brush TimerColor
+        {
+            get
+            {
+                if (Running)
+                {
+                    return Brushes.Green;
+                }
+                else
+                {
+                    return Brushes.Red;
+                }
+            }
+            set
+            {
+               
+            }
+        }
 
 
 
         public void Reset()
         {
+            
             nSeconds = 0;
             nMinutes = 0;
             nHours = 0;
@@ -286,7 +313,7 @@ namespace DigitalClock
 
 			sizef = ssd.MeasureString(strTime, font);
 
-			ssd.DrawString(strTime, font, Brushes.Green, 
+			ssd.DrawString(strTime, font, TimerColor, 
 				(ClientSize.Width  - sizef.Width) / 2, 
 				(ClientSize.Height - sizef.Height) / 2);
 
