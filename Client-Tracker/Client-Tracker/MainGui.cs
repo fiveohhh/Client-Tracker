@@ -126,5 +126,10 @@ namespace Client_Tracker
             about.ShowDialog();
         }
 
+        private void getClient1_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

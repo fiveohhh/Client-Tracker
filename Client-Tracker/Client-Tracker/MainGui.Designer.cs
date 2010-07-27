@@ -115,6 +115,7 @@
             this.getClient1.Name = "getClient1";
             this.getClient1.Size = new System.Drawing.Size(194, 233);
             this.getClient1.TabIndex = 0;
+            this.getClient1.Load += new System.EventHandler(this.getClient1_Load);
             // 
             // holdArea1
             // 

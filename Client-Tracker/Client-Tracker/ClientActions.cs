@@ -89,6 +89,15 @@ namespace Client_Tracker
                 this.Invalidate();
             }
         }
+        
+        /// <summary>
+        /// Get all the data we need, to process a new entry 
+        /// </summary>
+        /// <returns></returns>
+        public HoldData GetHoldData()
+        {
+            return new HoldData(this);
+        }
 
         /// <summary>
         /// Set the client for this form
@@ -134,6 +143,12 @@ namespace Client_Tracker
         private void btn_reset_Click(object sender, EventArgs e)
         {
             digitalDisplay1.Reset();
+        }
+
+        private void btn_submitEntry_Click(object sender, EventArgs e)
+        {
+            // Client.AddNote(this.txtBox_notes.Text);
+            Client.AddWorkEntry(new WorkEntry(StartTime, GetElapsedTime(), txtBox_notes.Text, user), user);
         }
 
       

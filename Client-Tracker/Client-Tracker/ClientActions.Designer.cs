@@ -113,6 +113,7 @@
             this.btn_submitEntry.TabIndex = 2;
             this.btn_submitEntry.Text = "Submit Work";
             this.btn_submitEntry.UseVisualStyleBackColor = true;
+            this.btn_submitEntry.Click += new System.EventHandler(this.btn_submitEntry_Click);
             // 
             // btn_pauseAndHold
             // 
@@ -145,11 +146,11 @@
             // digitalDisplay1
             // 
             this.digitalDisplay1.CountDown = true;
-            this.digitalDisplay1.Hours = "00";
+            this.digitalDisplay1.Hours = "0";
             this.digitalDisplay1.Location = new System.Drawing.Point(302, 69);
-            this.digitalDisplay1.Minutes = "00";
+            this.digitalDisplay1.Minutes = "0";
             this.digitalDisplay1.Name = "digitalDisplay1";
-            this.digitalDisplay1.Seconds = "00";
+            this.digitalDisplay1.Seconds = "0";
             this.digitalDisplay1.Size = new System.Drawing.Size(150, 53);
             this.digitalDisplay1.TabIndex = 5;
             this.digitalDisplay1.UseWindowColours = false;

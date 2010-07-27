@@ -72,9 +72,5 @@ namespace Client_Tracker
                 ActivateClient(w, null);
             }
         }
-
-
-
-       
     }
 }

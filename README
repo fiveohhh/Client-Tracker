@@ -1,4 +1,8 @@
 
 check for a user in the hold area when loading a client
-work on XML serialization and deserialization
+work on XML serialization and 
+deserialization
 figure out how we want to do time.. round up to closest 7 mins?
+
+Need to find a way to login as a user.  Maybe Password, store the hash in the users xml?  
+disable everything on load until user has been registered?

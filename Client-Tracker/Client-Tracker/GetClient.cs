@@ -33,6 +33,8 @@ namespace Client_Tracker
             {
                 // if new client box is checked
                 desiredClient = new Client(txtBox_firstName.Text, txtBox_lastName.Text);
+                txtBox_firstName.Text = string.Empty;
+                txtBox_lastName.Text = string.Empty;
 
             }
             else
