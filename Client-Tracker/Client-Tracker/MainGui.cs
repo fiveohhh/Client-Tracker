@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
+using System.IO;
 
 namespace Client_Tracker
 {
@@ -61,6 +63,15 @@ namespace Client_Tracker
             Client c = (Client)sender;
             clientActions1.SetClient(c);
             DisableClientSelection();
+            if (ClientList.Exists(x => x.FullName == c.FullName))
+            {
+                // do nothing client already in list
+            }
+            else
+            {
+                ClientList.Add(c);
+            }
+            
         }
 
         /// <summary>
@@ -117,7 +128,6 @@ namespace Client_Tracker
             // loading fake client for testing
             Client testClient = new Client("bob", "Wilson");
             ClientList.Add(testClient);
-            
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -126,8 +136,42 @@ namespace Client_Tracker
             about.ShowDialog();
         }
 
-        private void getClient1_Load(object sender, EventArgs e)
+
+        private void setUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            GetUserName getName = new GetUserName();
+            getName.btn_registerUser.Click += new EventHandler(btn_registerUser_Click);
+            getName.ShowDialog();
+        }
+
+        void btn_registerUser_Click(object sender, EventArgs e)
+        {
+            GetUserName getUserForm = (GetUserName)((Control)sender).Parent;
+            clientActions1.SetUser(getUserForm.GetUser());
+            getUserForm.Dispose();
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            // transform list of clients into list of clientinfo
+            List<ClientData> clData = new List<ClientData>();
+            foreach (Client cl in ClientList)
+            {
+                clData.Add(new ClientData(cl));
+            }
+
+            // serialize clientList into XmlDocument
+            XmlDocument xDoc = Serialization.Serializer.Serialize(clData);
+
+            FileInfo fi = new FileInfo("ClientTrackerData.xml");
+            XmlTextWriter xtw = new XmlTextWriter(fi.Name,Encoding.ASCII);
+            xtw.Formatting = Formatting.Indented;
+            xtw.Indentation = 4;
+            xtw.IndentChar = ' ';
+            xDoc.Save(xtw);
+            string xml = xDoc.InnerXml;
 
         }
 

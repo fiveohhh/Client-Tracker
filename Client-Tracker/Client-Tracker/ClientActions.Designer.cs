@@ -40,6 +40,7 @@
             this.cmbBox_typeOfWorkDone = new System.Windows.Forms.ComboBox();
             this.digitalDisplay1 = new DigitalClock.DigitalDisplay();
             this.lbl_clientName = new System.Windows.Forms.Label();
+            this.btn_Remove = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.grpBox_notes.SuspendLayout();
             this.grpBox_typeOfWork.SuspendLayout();
@@ -107,9 +108,9 @@
             // 
             // btn_submitEntry
             // 
-            this.btn_submitEntry.Location = new System.Drawing.Point(318, 290);
+            this.btn_submitEntry.Location = new System.Drawing.Point(318, 277);
             this.btn_submitEntry.Name = "btn_submitEntry";
-            this.btn_submitEntry.Size = new System.Drawing.Size(95, 23);
+            this.btn_submitEntry.Size = new System.Drawing.Size(134, 36);
             this.btn_submitEntry.TabIndex = 2;
             this.btn_submitEntry.Text = "Submit Work";
             this.btn_submitEntry.UseVisualStyleBackColor = true;
@@ -164,10 +165,21 @@
             this.lbl_clientName.Size = new System.Drawing.Size(0, 29);
             this.lbl_clientName.TabIndex = 6;
             // 
+            // btn_Remove
+            // 
+            this.btn_Remove.Location = new System.Drawing.Point(367, 328);
+            this.btn_Remove.Name = "btn_Remove";
+            this.btn_Remove.Size = new System.Drawing.Size(75, 23);
+            this.btn_Remove.TabIndex = 7;
+            this.btn_Remove.Text = "Remove";
+            this.btn_Remove.UseVisualStyleBackColor = true;
+            this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
+            // 
             // ClientActions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_Remove);
             this.Controls.Add(this.lbl_clientName);
             this.Controls.Add(this.digitalDisplay1);
             this.Controls.Add(this.grpBox_typeOfWork);
@@ -200,5 +212,6 @@
         private DigitalClock.DigitalDisplay digitalDisplay1;
         private System.Windows.Forms.Button btn_reset;
         private System.Windows.Forms.Label lbl_clientName;
+        private System.Windows.Forms.Button btn_Remove;
     }
 }

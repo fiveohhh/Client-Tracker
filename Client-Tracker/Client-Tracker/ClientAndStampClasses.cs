@@ -14,17 +14,21 @@ namespace Client_Tracker
         /// <summary>
         /// Users First Name
         /// </summary>
-        public string FirstName { get; private set; }
+        public string FirstName { get;  set; }
 
         /// <summary>
         /// Users Last Name
         /// </summary>
-        public string LastName { get; private set; }
+        public string LastName { get;  set; }
 
         public ClientTrackerUser(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;
+        }
+
+        public ClientTrackerUser()
+        {
         }
 
     }
@@ -60,6 +64,10 @@ namespace Client_Tracker
             LastName = lastName;
             AllWorkDone = new List<WorkEntry>();
             Notes = new List<string>();
+        }
+
+        public Client()
+        {
         }
 
         public string FullName
@@ -116,6 +124,15 @@ namespace Client_Tracker
             Notes = notes;
             WorkDone = workDone;
         }
+        public ClientData(Client client)
+        {
+            FirstName = client.FirstName;
+            Lastname = client.LastName;
+            Notes = client.GetNotes();
+            WorkDone = client.AllWorkDone;
+        }
+        public ClientData()
+        {}
     }
 
     /// <summary>
@@ -125,24 +142,45 @@ namespace Client_Tracker
     public class WorkEntry
     {
         /// <summary>
+        /// User that submitted the work done
+        /// </summary>
+        ClientTrackerUser User { get; set; }
+
+        /// <summary>
         /// Time work was started
         /// </summary>
-        public DateTime StartTime { get; private set; }
+        public DateTime StartTime { get;  set; }
 
         /// <summary>
         /// Total Time worked on this client during this WorkEntry
         /// </summary>
-        public TimeSpan TimeWorked { get; private set; }
+        [XmlIgnore]
+        public TimeSpan TimeWorked { get;  set; }
+
+        /// <summary>
+        /// Used for serialization
+        /// </summary>
+        public string Duration
+        {
+            get
+            {
+                return TimeWorked.Duration().ToString();
+            }
+            set
+            {
+                TimeWorked = TimeSpan.Parse(value);
+            }
+        }
 
         /// <summary>
         /// Notes about what was done during this work entry
         /// </summary>
-        public string Notes { get; private set; }
+        public string Notes { get;  set; }
 
         /// <summary>
         /// Type of work done during this WorkEntry
         /// </summary>
-        public TypesOfWork TypeOfWorkDone { get; private set; }
+        public TypesOfWork TypeOfWorkDone { get;  set; }
 
         public WorkEntry(DateTime startTime, TimeSpan timeWorked, string notes, ClientTrackerUser user)
             : this(startTime, timeWorked, notes, user, TypesOfWork.NOTSPECIFIED)
@@ -151,10 +189,15 @@ namespace Client_Tracker
 
         public WorkEntry(DateTime startTime, TimeSpan timeWorked, string notes, ClientTrackerUser user, TypesOfWork typeOfWork)
         {
+            User = user;
             TypeOfWorkDone = typeOfWork;
             StartTime = startTime;
             TimeWorked = timeWorked;
             Notes = notes;
+        }
+
+        public WorkEntry()
+        {
         }
 
 

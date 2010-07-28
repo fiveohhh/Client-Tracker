@@ -11,7 +11,7 @@ namespace Client_Tracker
 {
     public partial class ClientActions : UserControl 
     {
-
+        ClientTrackerUser User;
         DateTime StartTime;
         Client Client;
         public ClientActions()
@@ -20,6 +20,11 @@ namespace Client_Tracker
             BindTypeOfWorkToComboBox();
             digitalDisplay1.CountDown = false;
             Enabled = false;
+        }
+
+        public void SetUser(ClientTrackerUser user)
+        {
+            User = user;
         }
 
         public void StopTimer()
@@ -147,13 +152,24 @@ namespace Client_Tracker
 
         private void btn_submitEntry_Click(object sender, EventArgs e)
         {
-            // Client.AddNote(this.txtBox_notes.Text);
-            Client.AddWorkEntry(new WorkEntry(StartTime, GetElapsedTime(), txtBox_notes.Text, user), user);
+            
+           // Client.AddNote(this.txtBox_notes.Text);
+            Client.AddWorkEntry(new WorkEntry(StartTime, GetElapsedTime(), txtBox_notes.Text, User), User);
         }
 
-      
-
-       
+        private void btn_Remove_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Are you sure you want to remove this Client?\r\nAny work recorded will not be saved.", 
+                                "Are You Sure?", MessageBoxButtons.YesNo);
+            if (res == DialogResult.Yes)
+            {
+                //get rid of work
+            }
+            else
+            {
+                // do nothing and pretend we never clicked it
+            }
+        }
 
     }
 }
