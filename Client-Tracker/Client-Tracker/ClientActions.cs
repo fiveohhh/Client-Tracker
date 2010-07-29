@@ -160,7 +160,7 @@ namespace Client_Tracker
         {
             
            // Client.AddNote(this.txtBox_notes.Text);
-            Client.AddWorkEntry(new WorkEntry(StartTime, GetElapsedTime(), txtBox_notes.Text, User), User);
+            Client.AddWorkEntry(new WorkEntry(StartTime, GetElapsedTime(), txtBox_notes.Text, User, (TypesOfWork)cmbBox_typeOfWorkDone.SelectedValue), User);
             ResetControlData();
         }
 
