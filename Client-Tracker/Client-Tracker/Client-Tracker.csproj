@@ -59,6 +59,7 @@
       <DependentUpon>ClientActions.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientAndStampClasses.cs" />
+    <Compile Include="Encryption\Encryption.cs" />
     <Compile Include="GetClient.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -141,9 +142,7 @@
       <Name>DigitalClock</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Encryption\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
