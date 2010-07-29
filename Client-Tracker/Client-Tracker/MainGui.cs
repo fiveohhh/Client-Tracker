@@ -154,7 +154,6 @@ namespace Client_Tracker
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
             // transform list of clients into list of clientinfo
             List<ClientData> clData = new List<ClientData>();
             foreach (Client cl in ClientList)
@@ -172,8 +171,6 @@ namespace Client_Tracker
             xtw.IndentChar = ' ';
             xDoc.Save(xtw);
             string xml = xDoc.InnerXml;
-
         }
-
     }
 }

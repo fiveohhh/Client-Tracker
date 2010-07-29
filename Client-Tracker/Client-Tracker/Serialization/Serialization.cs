@@ -10,23 +10,6 @@ namespace Serialization
 {
     public static class Serializer
     {
-
-        static public string SerializeListToXML(List<object> o)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<object>));
-            StringWriter sw = new StringWriter();
-            serializer.Serialize(sw, o);
-            return sw.ToString();
-        }
-
-        static public List<object> DeserializeListFromXML(string xml)
-        {
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<object>));
-            List<object> settings = null;
-            settings = (List<object>)deserializer.Deserialize(new StringReader(xml));
-            return settings;
-        }
-
         /// <summary>
         /// Deserializes an xml document back into an object
         /// </summary>
@@ -40,26 +23,20 @@ namespace Serialization
             byte[] buffer = ASCIIEncoding.UTF8.GetBytes(xmlString);
             MemoryStream ms = new MemoryStream(buffer);
             XmlReader reader = new XmlTextReader(ms);
-            Exception caught = null;
 
             try
             {
                 object o = s.Deserialize(reader);
                 return o;
             }
-
             catch (Exception e)
             {
-                caught = e;
+                throw e;
             }
             finally
             {
                 reader.Close();
-
-                if (caught != null)
-                    throw caught;
             }
-            return null;
         }
 
         /// <summary>
@@ -70,13 +47,8 @@ namespace Serialization
         public static XmlDocument Serialize(object o)
         {
             XmlSerializer s = new XmlSerializer(o.GetType());
-
             MemoryStream ms = new MemoryStream();
             XmlTextWriter writer = new XmlTextWriter(ms, new UTF8Encoding());
-            writer.Formatting = Formatting.Indented;
-            writer.IndentChar = ' ';
-            writer.Indentation = 5;
-            Exception caught = null;
 
             try
             {
@@ -88,17 +60,24 @@ namespace Serialization
             }
             catch (Exception e)
             {
-                caught = e;
+                throw e;
             }
             finally
             {
                 writer.Close();
                 ms.Close();
-
-                if (caught != null)
-                    throw caught;
             }
-            return null;
+        }
+
+        /// <summary>
+        /// Serializes an object into a string
+        /// </summary>
+        /// <param name="o">The object to serialize</param>
+        /// <returns>string of serialized XML</returns>
+        public static string SerializeToString(object o, bool prettyFormat)
+        {
+            XmlDocument xDoc = Serialize(o);
+            return xDoc.InnerXml;
         }
     }
 }
