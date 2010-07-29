@@ -77,6 +77,13 @@ namespace Serialization
         public static string SerializeToString(object o, bool prettyFormat)
         {
             XmlDocument xDoc = Serialize(o);
+            TextWriter sw = new StringWriter();
+            XmlTextWriter xtw = new XmlTextWriter(sw);
+            xtw.Formatting = Formatting.Indented;
+            xtw.Indentation = 1;
+            xtw.IndentChar = '\x09';
+            xDoc.Save(xtw);
+            string xml = xDoc.InnerXml;
             return xDoc.InnerXml;
         }
     }

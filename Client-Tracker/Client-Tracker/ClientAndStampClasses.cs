@@ -66,6 +66,14 @@ namespace Client_Tracker
             Notes = new List<string>();
         }
 
+        public Client(ClientData data)
+        {
+            FirstName = data.FirstName;
+            LastName = data.Lastname;
+            AllWorkDone = data.WorkDone;
+            Notes = data.Notes;
+        }
+
         public Client()
         {
         }

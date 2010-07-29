@@ -86,7 +86,7 @@ namespace Client_Tracker
         /// <summary>
         /// Enable controls where you can load a client
         /// </summary>
-        void EnableClientSelection()
+        public void EnableClientSelection()
         {
             getClient1.Enabled = true;
             holdArea1.Enabled = true;
@@ -125,9 +125,19 @@ namespace Client_Tracker
         /// </summary>
         private void LoadClients()
         {
-            // loading fake client for testing
-            Client testClient = new Client("bob", "Wilson");
-            ClientList.Add(testClient);
+            ClientList = new List<Client>();
+            FileInfo fi = new FileInfo("ClientTrackerData.xml");
+            TextReader tr = new StreamReader(fi.Name);
+            string xml = tr.ReadToEnd();
+
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.LoadXml(xml);
+            var cl = (List<ClientData>)Serialization.Serializer.Deserialize(xDoc, typeof(List<ClientData>));
+            foreach (ClientData d in cl)
+            {
+                Client c = new Client(d);
+                ClientList.Add(c);
+            }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -166,11 +176,19 @@ namespace Client_Tracker
 
             FileInfo fi = new FileInfo("ClientTrackerData.xml");
             XmlTextWriter xtw = new XmlTextWriter(fi.Name,Encoding.ASCII);
+            
             xtw.Formatting = Formatting.Indented;
-            xtw.Indentation = 4;
-            xtw.IndentChar = ' ';
+            xtw.Indentation = 1;
+            xtw.IndentChar = '\x09';
+            
+            // save to fi
             xDoc.Save(xtw);
-            string xml = xDoc.InnerXml;
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadClients();
+            getClient1.SetClientList(ClientList);
         }
     }
 }

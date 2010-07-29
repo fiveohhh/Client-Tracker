@@ -59,6 +59,7 @@ namespace Client_Tracker
         public void ResetControlData()
         {
             Enabled = false;
+            EnableClientSelection();
             Client = null;
             digitalDisplay1.Stop();
             digitalDisplay1.Reset();
@@ -66,6 +67,11 @@ namespace Client_Tracker
 
             lbl_clientName.Text = string.Empty;
             txtBox_notes.Text = string.Empty;
+        }
+
+        void EnableClientSelection()
+        {
+            ((MainGui)((Control)((Control)this.Parent).Parent).Parent).EnableClientSelection();
         }
 
         public void LoadHoldData(HoldData holdData)
@@ -155,6 +161,7 @@ namespace Client_Tracker
             
            // Client.AddNote(this.txtBox_notes.Text);
             Client.AddWorkEntry(new WorkEntry(StartTime, GetElapsedTime(), txtBox_notes.Text, User), User);
+            ResetControlData();
         }
 
         private void btn_Remove_Click(object sender, EventArgs e)
@@ -164,12 +171,12 @@ namespace Client_Tracker
             if (res == DialogResult.Yes)
             {
                 //get rid of work
+                this.ResetControlData();
             }
             else
             {
                 // do nothing and pretend we never clicked it
             }
         }
-
     }
 }

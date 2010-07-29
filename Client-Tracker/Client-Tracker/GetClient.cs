@@ -24,6 +24,7 @@ namespace Client_Tracker
             cmbBox_existingClients.DataSource = bs.DataSource;
 
             cmbBox_existingClients.DisplayMember = "FullName";
+            this.Invalidate();
         }
 
         private void btn_ClientReady_Click(object sender, EventArgs e)
