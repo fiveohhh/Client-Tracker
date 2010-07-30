@@ -175,14 +175,16 @@ namespace Client_Tracker
             XmlDocument xDoc = Serialization.Serializer.Serialize(clData);
 
             FileInfo fi = new FileInfo("ClientTrackerData.xml");
-            XmlTextWriter xtw = new XmlTextWriter(fi.Name,Encoding.ASCII);
-            
-            xtw.Formatting = Formatting.Indented;
-            xtw.Indentation = 1;
-            xtw.IndentChar = '\x09';
-            
-            // save to fi
-            xDoc.Save(xtw);
+            using (XmlTextWriter xtw = new XmlTextWriter(fi.Name, Encoding.ASCII))
+            {
+
+                xtw.Formatting = Formatting.Indented;
+                xtw.Indentation = 1;
+                xtw.IndentChar = '\x09';
+
+                // save to fi
+                xDoc.Save(xtw);
+            }
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
