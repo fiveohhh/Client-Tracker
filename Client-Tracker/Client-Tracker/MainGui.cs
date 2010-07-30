@@ -13,14 +13,17 @@ namespace Client_Tracker
 {
     public partial class MainGui : Form
     {
+        /// <summary>
+        /// Holds the master list of clients that the program has loaded
+        /// </summary>
         public List<Client> ClientList = new List<Client>();
-
 
         public MainGui()
         {
             LoadData();// read client info from xml
             InitializeComponent();
-            getClient1.SetClientList(ClientList);
+            getClient1.SetCmbBoxBindingSrc(ClientList);
+            getClient1.RebindCmbBoxDataSrc();
 
             // subsribe to holdButton so we can move form to hold area
             clientActions1.btn_pauseAndHold.Click += new EventHandler(btn_pauseAndHold_Click);
@@ -30,8 +33,14 @@ namespace Client_Tracker
 
             // subscribe to activate client so we can reload a client.
             holdArea1.ActivateClient += new EventHandler(holdArea1_ActivateClient);
+
+            
         }
 
+        public void AddClient(Client cl)
+        {
+            ClientList.Add(cl);
+        }
 
         /// <summary>
         /// re-activate a client from the hold area
@@ -61,16 +70,39 @@ namespace Client_Tracker
         void getClient1_ClientReady(object sender, EventArgs e)
         {
             Client c = (Client)sender;
-            clientActions1.SetClient(c);
-            DisableClientSelection();
-            if (ClientList.Exists(x => x.FullName == c.FullName))
+
+            if (ClientList.Any(x => x.FullName.ToLower() == c.FullName.ToLower()) && getClient1.NewClientChecked)
             {
-                // do nothing client already in list
+                // if client is already in list & we checked new client,
+                Client duplicate = new Client(c.FirstName + "X",c.LastName);
+
+                // warning message for duplicate name entry
+                string warnMsg = c.FullName + " is already listed as a client\r\nIf you proceed, " 
+                    + duplicate.FullName + " will be used instead";
+
+                var dr = MessageBox.Show(warnMsg, "Client Already In List", MessageBoxButtons.OKCancel);
+                if (dr == DialogResult.OK)
+                {
+                    // if user wants to add another client with same name(X appended to first name)
+                    c = duplicate;
+                    ClientList.Add(c);
+                }
+                else
+                {
+                    // let user select another client
+                    EnableClientSelection();
+                    return;
+                }
             }
-            else
+            else if (getClient1.NewClientChecked)
             {
                 ClientList.Add(c);
             }
+            
+            clientActions1.SetClient(c);
+            DisableClientSelection();
+            getClient1.RebindCmbBoxDataSrc();
+            
             
         }
 
@@ -88,6 +120,7 @@ namespace Client_Tracker
         /// </summary>
         public void EnableClientSelection()
         {
+            //getClient1.RebindCmbBoxDataSrc();
             getClient1.Enabled = true;
             holdArea1.Enabled = true;
         }
@@ -190,7 +223,7 @@ namespace Client_Tracker
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadClients();
-            getClient1.SetClientList(ClientList);
+            getClient1.RebindCmbBoxDataSrc();
         }
     }
 }
