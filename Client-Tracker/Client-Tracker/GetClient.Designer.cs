@@ -69,7 +69,7 @@
             this.label2.Location = new System.Drawing.Point(7, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 1;
             this.label2.Text = "First Name";
             // 
             // label3
@@ -78,7 +78,7 @@
             this.label3.Location = new System.Drawing.Point(6, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 3;
             this.label3.Text = "Last Name";
             // 
             // btn_ClientReady
@@ -86,7 +86,7 @@
             this.btn_ClientReady.Location = new System.Drawing.Point(23, 204);
             this.btn_ClientReady.Name = "btn_ClientReady";
             this.btn_ClientReady.Size = new System.Drawing.Size(138, 23);
-            this.btn_ClientReady.TabIndex = 6;
+            this.btn_ClientReady.TabIndex = 2;
             this.btn_ClientReady.Text = "Load Client";
             this.btn_ClientReady.UseVisualStyleBackColor = true;
             this.btn_ClientReady.Click += new System.EventHandler(this.btn_ClientReady_Click);
@@ -101,7 +101,7 @@
             this.grpBox_addClient.Location = new System.Drawing.Point(11, 62);
             this.grpBox_addClient.Name = "grpBox_addClient";
             this.grpBox_addClient.Size = new System.Drawing.Size(170, 136);
-            this.grpBox_addClient.TabIndex = 7;
+            this.grpBox_addClient.TabIndex = 1;
             this.grpBox_addClient.TabStop = false;
             this.grpBox_addClient.Text = "New Client";
             // 
@@ -111,7 +111,7 @@
             this.chkBox_newClient.Location = new System.Drawing.Point(12, 102);
             this.chkBox_newClient.Name = "chkBox_newClient";
             this.chkBox_newClient.Size = new System.Drawing.Size(111, 17);
-            this.chkBox_newClient.TabIndex = 6;
+            this.chkBox_newClient.TabIndex = 4;
             this.chkBox_newClient.Text = "Create New Client";
             this.chkBox_newClient.UseVisualStyleBackColor = true;
             // 
@@ -121,7 +121,7 @@
             this.grpBox_existingClient.Location = new System.Drawing.Point(11, 6);
             this.grpBox_existingClient.Name = "grpBox_existingClient";
             this.grpBox_existingClient.Size = new System.Drawing.Size(170, 50);
-            this.grpBox_existingClient.TabIndex = 8;
+            this.grpBox_existingClient.TabIndex = 0;
             this.grpBox_existingClient.TabStop = false;
             this.grpBox_existingClient.Text = "Existing Client";
             // 
