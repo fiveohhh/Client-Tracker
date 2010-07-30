@@ -78,6 +78,7 @@
     <Compile Include="HoldArea.Designer.cs">
       <DependentUpon>HoldArea.cs</DependentUpon>
     </Compile>
+    <Compile Include="LicenseClass.cs" />
     <Compile Include="MainGui.cs">
       <SubType>Form</SubType>
     </Compile>
