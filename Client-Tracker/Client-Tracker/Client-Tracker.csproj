@@ -59,6 +59,8 @@
       <DependentUpon>ClientActions.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientAndStampClasses.cs" />
+    <Compile Include="DigitalClock\DigitalClock.cs" />
+    <Compile Include="DigitalClock\SevenSegmentDisplay.cs" />
     <Compile Include="Encryption\Encryption.cs" />
     <Compile Include="GetClient.cs">
       <SubType>UserControl</SubType>
@@ -101,6 +103,9 @@
     <EmbeddedResource Include="ClientActions.resx">
       <DependentUpon>ClientActions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DigitalClock\DigitalClock.resx">
+      <DependentUpon>DigitalClock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GetClient.resx">
       <DependentUpon>GetClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,12 +143,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="DigitalClock\DigitalClock.csproj">
-      <Project>{9FD940F0-40FB-4533-997F-614DD22219EA}</Project>
-      <Name>DigitalClock</Name>
-    </ProjectReference>
+    <Folder Include="ClockUI\" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -232,8 +232,37 @@ namespace Client_Tracker
         }
     }
 
+    /// <summary>
+    /// Different types of work 
+    /// </summary>
     public enum TypesOfWork
     {
         NOTSPECIFIED, PHONE, IN_OFFICE, COURT
+    }
+
+    /// <summary>
+    /// used to hold all information we want to persist when program closes
+    /// </summary>
+    public class ClientTrackerData
+    {
+        /// <summary>
+        /// list of all clients
+        /// </summary>
+        public List<ClientData> ClData;
+
+        public ClientTrackerData(List<Client> clients)
+        {
+            // transform Client into ClientData
+            ClData = new List<ClientData>();
+            foreach (Client cl in clients)
+            {
+                ClData.Add(new ClientData(cl));
+            }
+        }
+
+        ClientTrackerData()
+        {
+        }
+
     }
 }

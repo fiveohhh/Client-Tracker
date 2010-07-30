@@ -177,8 +177,8 @@ namespace Client_Tracker
 
                     XmlDocument xDoc = new XmlDocument();
                     xDoc.LoadXml(xml);
-                    var cl = (List<ClientData>)Serialization.Serializer.Deserialize(xDoc, typeof(List<ClientData>));
-                    foreach (ClientData d in cl)
+                    var cl = (ClientTrackerData)Serialization.Serializer.Deserialize(xDoc, typeof(ClientTrackerData));
+                    foreach (ClientData d in cl.ClData)
                     {
                         Client c = new Client(d);
                         ClientList.Add(c);
@@ -219,15 +219,12 @@ namespace Client_Tracker
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // transform list of clients into list of clientinfo
-            List<ClientData> clData = new List<ClientData>();
-            foreach (Client cl in ClientList)
-            {
-                clData.Add(new ClientData(cl));
-            }
+            ClientTrackerData objToSerialize = new ClientTrackerData(ClientList);
+
+
 
             // serialize clientList into XmlDocument
-            XmlDocument xDoc = Serialization.Serializer.Serialize(clData);
+            XmlDocument xDoc = Serialization.Serializer.Serialize(objToSerialize);
 
             FileInfo fi = new FileInfo("ClientTrackerData.xml");
             using (XmlTextWriter xtw = new XmlTextWriter(fi.Name, Encoding.ASCII))
