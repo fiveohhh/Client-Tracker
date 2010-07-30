@@ -41,6 +41,7 @@
             this.getClient1 = new Client_Tracker.GetClient();
             this.holdArea1 = new Client_Tracker.HoldArea();
             this.clientActions1 = new Client_Tracker.ClientActions();
+            this.lbl_licensedTo = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -179,11 +180,21 @@
             this.clientActions1.Size = new System.Drawing.Size(516, 433);
             this.clientActions1.TabIndex = 0;
             // 
+            // lbl_licensedTo
+            // 
+            this.lbl_licensedTo.AutoSize = true;
+            this.lbl_licensedTo.Location = new System.Drawing.Point(336, 8);
+            this.lbl_licensedTo.Name = "lbl_licensedTo";
+            this.lbl_licensedTo.Size = new System.Drawing.Size(39, 13);
+            this.lbl_licensedTo.TabIndex = 2;
+            this.lbl_licensedTo.Text = "Hmmm";
+            // 
             // MainGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 459);
+            this.Controls.Add(this.lbl_licensedTo);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -219,6 +230,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.Label lbl_licensedTo;
     }
 }
 

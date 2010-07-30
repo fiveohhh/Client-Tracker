@@ -152,7 +152,7 @@ namespace Client_Tracker
         /// <summary>
         /// User that submitted the work done
         /// </summary>
-        ClientTrackerUser User { get; set; }
+        public ClientTrackerUser User { get; set; }
 
         /// <summary>
         /// Time work was started

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Client_Tracker
+namespace License
 {
     /// <summary>
     /// Contains data for licensing info
@@ -26,9 +26,14 @@ namespace Client_Tracker
         public bool Demo { get; set; }
 
         /// <summary>
-        /// Name of user
+        /// First name of user
         /// </summary>
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Last name of user
+        /// </summary>
+        public string LastName { get; set; }
 
         /// <summary>
         /// User's Email
@@ -39,6 +44,21 @@ namespace Client_Tracker
         /// Product license created for
         /// </summary>
         public ProductName Product { get; set; }
+
+        public LicenseClass(DateTime created, DateTime goodTill, bool demo, string firstName, string lastName, string email, ProductName product)
+        {
+            CreatedOn = created;
+            GoodTill = goodTill;
+            Demo = demo;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Product = product;
+        }
+
+        LicenseClass()
+        {
+        }
 
     }
 
