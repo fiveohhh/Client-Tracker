@@ -11,9 +11,11 @@ using System.IO;
 using Client_Tracker.Encryption;
 using System.Text.RegularExpressions;
 using License;
+using System.Threading;
 
 namespace Client_Tracker
 {
+    
     public partial class MainGui : Form
     {
         string publicKey = "<RSAKeyValue><Modulus>ph9nU2+VKhjOLc3aW0Rg4UgIQGAiSt6+75l8MtsjFxs2uBs0ApIG9ihGG8RW8HvY4I5Ll4+k9Pe1HtQJ3OBVFMTxYo/FgS3x1V6dKRJ6UXgfDWPJVr0fE2bOdDa5F6oGv8JEQE6DCWV5jFHX57fSzqHA6UovJrui6FB9KtybCDk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
@@ -82,18 +84,34 @@ namespace Client_Tracker
             string initVector = "ObIM5&0C%$R9IwLV"; // must be 16 bytes
             int keySize = 256;                // can be 192 or 128
 
-            string decryptedLicenseFile = SymetricEncryption.Decrypt(licenseFile,
-                                                    passPhrase,
-                                                    saltValue,
-                                                    hashAlgorithm,
-                                                    passwordIterations,
-                                                    initVector,
-                                                    keySize);
-            string[] lines = Regex.Split(decryptedLicenseFile, "\r\n");
-            string sig = lines[0];
-            string licenseFileXML = lines[1];
+            bool isLicenseValid = true;
 
-            bool isLicenseValid = Encryption.DigitalSigning.VerifySignature(licenseFileXML, sig, publicKey);
+            string licenseFileXML = string.Empty;
+            string sig = string.Empty;
+            try
+            {
+                string decryptedLicenseFile = SymetricEncryption.Decrypt(licenseFile,
+                                                        passPhrase,
+                                                        saltValue,
+                                                        hashAlgorithm,
+                                                        passwordIterations,
+                                                        initVector,
+                                                        keySize);
+                string[] lines = Regex.Split(decryptedLicenseFile, "\r\n");
+                sig = lines[0];
+                licenseFileXML = lines[1];
+            }
+            catch
+            {
+                //error derypting.. license not valid
+                isLicenseValid = false;
+            }
+
+
+            if (!isLicenseValid)
+            {
+                isLicenseValid = Encryption.DigitalSigning.VerifySignature(licenseFileXML, sig, publicKey);
+            }
 
             if (isLicenseValid)
             {
@@ -107,8 +125,10 @@ namespace Client_Tracker
             else
             {
                 MessageBox.Show("Unable to validate license if you purchased this software and lost your license please contact" +
-                    "the developer at andy@chiefmarley.com for a new one");
-                Application.Exit();
+                    " the developer at andy@chiefmarley.com for a new one");
+                //this.Close();
+                //Thread.CurrentThread.Abort();
+                Environment.Exit(0);
             }
         }
 
