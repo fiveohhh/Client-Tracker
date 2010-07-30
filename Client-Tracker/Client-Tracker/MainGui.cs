@@ -16,13 +16,36 @@ namespace Client_Tracker
         /// <summary>
         /// Holds the master list of clients that the program has loaded
         /// </summary>
-        public List<Client> ClientList = new List<Client>();
+        private List<Client> ClientList = new List<Client>();
+
+        public List<Client> GetClientList()
+        {
+            return ClientList;
+        }
+
+        /// <summary>
+        /// Adds a Client to master list
+        /// </summary>
+        /// <param name="cl">Client to add</param>
+        public void AddClient(Client cl)
+        {
+            ClientList.Add(cl);
+        }
+
+        /// <summary>
+        /// Removes a client from the master list
+        /// </summary>
+        /// <param name="cl">Client to remove</param>
+        public void RemoveClient(Client cl)
+        {
+            ClientList.Remove(cl);
+        }
 
         public MainGui()
         {
             LoadData();// read client info from xml
             InitializeComponent();
-            getClient1.SetCmbBoxBindingSrc(ClientList);
+            getClient1.SetCmbBoxBindingSrc(GetClientList());
             getClient1.RebindCmbBoxDataSrc();
 
             // subsribe to holdButton so we can move form to hold area
@@ -34,12 +57,6 @@ namespace Client_Tracker
             // subscribe to activate client so we can reload a client.
             holdArea1.ActivateClient += new EventHandler(holdArea1_ActivateClient);
 
-            
-        }
-
-        public void AddClient(Client cl)
-        {
-            ClientList.Add(cl);
         }
 
         /// <summary>
@@ -78,7 +95,8 @@ namespace Client_Tracker
                 return;
             }
 
-            if (ClientList.Any(x => x.FullName.ToLower() == c.FullName.ToLower()) && getClient1.NewClientChecked)
+            // if full name of client matches another full name, and a new client was supposed to be created
+            if (GetClientList().Any(x => x.FullName.ToLower() == c.FullName.ToLower()) && getClient1.NewClientChecked)
             {
                 // if client is already in list & we checked new client,
                 Client duplicate = new Client(c.FirstName + "X",c.LastName);
@@ -92,7 +110,7 @@ namespace Client_Tracker
                 {
                     // if user wants to add another client with same name(X appended to first name)
                     c = duplicate;
-                    ClientList.Add(c);
+                    AddClient(c);
                 }
                 else
                 {
@@ -181,7 +199,7 @@ namespace Client_Tracker
                     foreach (ClientData d in cl.ClData)
                     {
                         Client c = new Client(d);
-                        ClientList.Add(c);
+                        AddClient(c);
                     }
                 }
             }
@@ -219,9 +237,7 @@ namespace Client_Tracker
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ClientTrackerData objToSerialize = new ClientTrackerData(ClientList);
-
-
+            ClientTrackerData objToSerialize = new ClientTrackerData(GetClientList());
 
             // serialize clientList into XmlDocument
             XmlDocument xDoc = Serialization.Serializer.Serialize(objToSerialize);

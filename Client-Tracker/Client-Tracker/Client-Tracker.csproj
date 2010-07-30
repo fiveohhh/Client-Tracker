@@ -59,7 +59,9 @@
       <DependentUpon>ClientActions.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientAndStampClasses.cs" />
-    <Compile Include="DigitalClock\DigitalClock.cs" />
+    <Compile Include="DigitalClock\DigitalClock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="DigitalClock\SevenSegmentDisplay.cs" />
     <Compile Include="Encryption\Encryption.cs" />
     <Compile Include="GetClient.cs">
