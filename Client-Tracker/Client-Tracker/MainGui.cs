@@ -70,6 +70,13 @@ namespace Client_Tracker
         void getClient1_ClientReady(object sender, EventArgs e)
         {
             Client c = (Client)sender;
+            if (c == null)
+            {
+                MessageBox.Show("Please select a client");
+                // let user select another client
+                EnableClientSelection();
+                return;
+            }
 
             if (ClientList.Any(x => x.FullName.ToLower() == c.FullName.ToLower()) && getClient1.NewClientChecked)
             {
@@ -96,10 +103,13 @@ namespace Client_Tracker
             }
             else if (getClient1.NewClientChecked)
             {
+                // else if new client checked add them to the list
                 ClientList.Add(c);
             }
             
+            // set client that we want to work on
             clientActions1.SetClient(c);
+
             DisableClientSelection();
             getClient1.RebindCmbBoxDataSrc();
             
@@ -120,7 +130,6 @@ namespace Client_Tracker
         /// </summary>
         public void EnableClientSelection()
         {
-            //getClient1.RebindCmbBoxDataSrc();
             getClient1.Enabled = true;
             holdArea1.Enabled = true;
         }
@@ -160,17 +169,30 @@ namespace Client_Tracker
         {
             ClientList = new List<Client>();
             FileInfo fi = new FileInfo("ClientTrackerData.xml");
-            TextReader tr = new StreamReader(fi.Name);
-            string xml = tr.ReadToEnd();
-
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.LoadXml(xml);
-            var cl = (List<ClientData>)Serialization.Serializer.Deserialize(xDoc, typeof(List<ClientData>));
-            foreach (ClientData d in cl)
+            try
             {
-                Client c = new Client(d);
-                ClientList.Add(c);
+                using (TextReader tr = new StreamReader(fi.Name))
+                {
+                    string xml = tr.ReadToEnd();
+
+                    XmlDocument xDoc = new XmlDocument();
+                    xDoc.LoadXml(xml);
+                    var cl = (List<ClientData>)Serialization.Serializer.Deserialize(xDoc, typeof(List<ClientData>));
+                    foreach (ClientData d in cl)
+                    {
+                        Client c = new Client(d);
+                        ClientList.Add(c);
+                    }
+                }
             }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("Unable to find Client Tracker Data file\r\nIf this is the first " +
+                    "time you have ran this a new file will be created\r\nIf this is not your first time" +
+                    " running Client Tracker, restore a backup");
+                return;
+            }
+            
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
