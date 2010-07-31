@@ -27,7 +27,9 @@ namespace Client_Tracker.wpfForms
         public void SetClient(Client client)
         {
             lbl_ClientName.Content = client.FullName;
-            
+
+            // rebind client data
+            cmbBox_workEntries.ItemsSource = null;
             cmbBox_workEntries.ItemsSource = client.AllWorkDone;
             cmbBox_workEntries.DisplayMemberPath = "StartTime";
         }

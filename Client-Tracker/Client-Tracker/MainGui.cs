@@ -172,7 +172,7 @@ namespace Client_Tracker
                 EnableClientSelection();
                 return;
             }
-            ((wpfForms.ViewClient)(elementHost1.Child)).SetClient(c);
+            
 
             // if full name of client matches another full name, and a new client was supposed to be created
             if (GetClientList().Any(x => x.FullName.ToLower() == c.FullName.ToLower()) && getClient1.NewClientChecked)
@@ -203,6 +203,9 @@ namespace Client_Tracker
                 // else if new client checked add them to the list
                 ClientList.Add(c);
             }
+
+            // set client in client view
+            ((wpfForms.ViewClient)(elementHost1.Child)).SetClient(c);
             
             // set client that we want to work on
             clientActions1.SetClient(c);

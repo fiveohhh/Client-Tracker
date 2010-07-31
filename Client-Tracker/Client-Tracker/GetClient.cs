@@ -28,19 +28,19 @@ namespace Client_Tracker
             InitializeComponent();
         }
 
-        void bs_AddingNew(object sender, AddingNewEventArgs e)
-        {
-            // check if client full name already exists
-            if (((List<Client>)(bs.DataSource)).
-                Any(x => x.FullName == ((Client)(e.NewObject)).FullName))
-            {
-            }
-        }
+        //void bs_AddingNew(object sender, AddingNewEventArgs e)
+        //{
+        //    // check if client full name already exists
+        //    if (((List<Client>)(bs.DataSource)).
+        //        Any(x => x.FullName == ((Client)(e.NewObject)).FullName))
+        //    {
+        //    }
+        //}
 
         public void SetCmbBoxBindingSrc(List<Client> clients)
         {
             bs = new BindingSource(clients, null);
-            bs.AddingNew += new AddingNewEventHandler(bs_AddingNew);
+            // bs.AddingNew += new AddingNewEventHandler(bs_AddingNew);
             //bs.
             cmbBox_existingClients.DisplayMember = "FullName";
         }
@@ -64,6 +64,13 @@ namespace Client_Tracker
                 desiredClient = new Client(
                     txtBox_firstName.Text.Trim().ToUpperFirstLetter(), 
                     txtBox_lastName.Text.Trim().ToUpperFirstLetter());
+
+                if (txtBox_firstName.Text == "" || txtBox_lastName.Text == "")
+                {
+                    MessageBox.Show("Cannot create a new client when first name or last name is blank");
+                    return;
+                }
+
 
                 // clear text boxes
                 txtBox_firstName.Text = string.Empty;
