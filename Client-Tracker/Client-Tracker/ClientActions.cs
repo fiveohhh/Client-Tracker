@@ -58,6 +58,7 @@ namespace Client_Tracker
         /// </summary>
         public void ResetControlData()
         {
+            ((MainGui)((Control)((Control)this.Parent).Parent).Parent).DisableViewClient();
             Enabled = false;
             EnableClientSelection();
             Client = null;

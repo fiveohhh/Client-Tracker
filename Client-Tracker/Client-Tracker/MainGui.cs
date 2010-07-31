@@ -67,6 +67,8 @@ namespace Client_Tracker
 
             CheckLicense();
 
+            //elementHost1.Enabled = false;
+
         }
 
         private void CheckLicense()
@@ -140,6 +142,7 @@ namespace Client_Tracker
         void holdArea1_ActivateClient(object sender, EventArgs e)
         {
             WorkOnHold w = (WorkOnHold)sender;
+            //elementHost1.Enabled = true;
 
             // move to active area
             clientActions1.LoadHoldData(w.GetHoldData());
@@ -159,6 +162,8 @@ namespace Client_Tracker
         /// <param name="e"></param>
         void getClient1_ClientReady(object sender, EventArgs e)
         {
+            //elementHost1.Enabled = true;
+
             Client c = (Client)sender;
             if (c == null)
             {
@@ -167,6 +172,7 @@ namespace Client_Tracker
                 EnableClientSelection();
                 return;
             }
+            ((wpfForms.ViewClient)(elementHost1.Child)).SetClient(c);
 
             // if full name of client matches another full name, and a new client was supposed to be created
             if (GetClientList().Any(x => x.FullName.ToLower() == c.FullName.ToLower()) && getClient1.NewClientChecked)
@@ -284,6 +290,12 @@ namespace Client_Tracker
                 return;
             }
             
+        }
+
+
+        public void DisableViewClient()
+        {
+            //((wpfForms.ViewClient)(elementHost1.Child)).IsEnabled = false;
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)

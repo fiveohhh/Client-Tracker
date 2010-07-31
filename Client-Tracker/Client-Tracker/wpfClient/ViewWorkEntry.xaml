@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Client_Tracker.wpfClient.ViewWorkEntry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="153" Width="509">
+    <Grid>
+        <Label Content="Date and Time" Height="28" HorizontalAlignment="Left" Margin="3,0,0,0" Name="lbl_DateTime" VerticalAlignment="Top" />
+        <Label Content="Duration of work" Height="28" HorizontalAlignment="Left" Margin="3,62,0,0" Name="lbl_Duration" VerticalAlignment="Top" FontSize="14" />
+        <Label Content="Type Of Work" Height="28" HorizontalAlignment="Left" Margin="3,28,0,0" Name="lbl_WorkType" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,106,0,0" Name="textBlock1" Text="Submitted by:" VerticalAlignment="Top" />
+        <Label Content="Submitter" Height="27" HorizontalAlignment="Left" Margin="18,119,0,0" Name="lbl_ClientTrackerUser" VerticalAlignment="Top" Width="114" />
+        <TextBox Height="101" HorizontalAlignment="Left" Margin="138,28,0,0" Name="txtBox_Notes" VerticalAlignment="Top" Width="336" />
+    </Grid>
+</UserControl>

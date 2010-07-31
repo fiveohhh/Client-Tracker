@@ -26,7 +26,6 @@ namespace Client_Tracker
         public GetClient()
         {
             InitializeComponent();
-           
         }
 
         void bs_AddingNew(object sender, AddingNewEventArgs e)
@@ -70,6 +69,8 @@ namespace Client_Tracker
                 txtBox_firstName.Text = string.Empty;
                 txtBox_lastName.Text = string.Empty;
 
+                
+
             }
             else
             {
@@ -84,6 +85,15 @@ namespace Client_Tracker
                 ClientReady(desiredClient,null);
             }
             
+        }
+
+        private void GetClient_EnabledChanged(object sender, EventArgs e)
+        {
+            if (this.Enabled == true)
+            {
+                chkBox_newClient.Checked = false;
+            }
+
         }
     }
 

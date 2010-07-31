@@ -134,6 +134,7 @@
             this.Controls.Add(this.btn_ClientReady);
             this.Name = "GetClient";
             this.Size = new System.Drawing.Size(194, 241);
+            this.EnabledChanged += new System.EventHandler(this.GetClient_EnabledChanged);
             this.grpBox_addClient.ResumeLayout(false);
             this.grpBox_addClient.PerformLayout();
             this.grpBox_existingClient.ResumeLayout(false);

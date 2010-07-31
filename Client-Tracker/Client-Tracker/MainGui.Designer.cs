@@ -42,6 +42,8 @@
             this.holdArea1 = new Client_Tracker.HoldArea();
             this.clientActions1 = new Client_Tracker.ClientActions();
             this.lbl_licensedTo = new System.Windows.Forms.Label();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.viewClient1 = new Client_Tracker.wpfForms.ViewClient();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -61,7 +63,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(726, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(731, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -121,7 +123,6 @@
             // splitContainer1
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 24);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -132,7 +133,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.clientActions1);
-            this.splitContainer1.Size = new System.Drawing.Size(726, 435);
+            this.splitContainer1.Size = new System.Drawing.Size(726, 409);
             this.splitContainer1.SplitterDistance = 204;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -151,8 +152,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.holdArea1);
-            this.splitContainer2.Size = new System.Drawing.Size(204, 435);
-            this.splitContainer2.SplitterDistance = 241;
+            this.splitContainer2.Size = new System.Drawing.Size(204, 409);
+            this.splitContainer2.SplitterDistance = 237;
             this.splitContainer2.TabIndex = 0;
             // 
             // getClient1
@@ -168,7 +169,7 @@
             this.holdArea1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.holdArea1.Location = new System.Drawing.Point(0, 0);
             this.holdArea1.Name = "holdArea1";
-            this.holdArea1.Size = new System.Drawing.Size(202, 188);
+            this.holdArea1.Size = new System.Drawing.Size(202, 166);
             this.holdArea1.TabIndex = 0;
             // 
             // clientActions1
@@ -177,7 +178,7 @@
             this.clientActions1.Enabled = false;
             this.clientActions1.Location = new System.Drawing.Point(0, 0);
             this.clientActions1.Name = "clientActions1";
-            this.clientActions1.Size = new System.Drawing.Size(516, 433);
+            this.clientActions1.Size = new System.Drawing.Size(516, 407);
             this.clientActions1.TabIndex = 0;
             // 
             // lbl_licensedTo
@@ -189,11 +190,21 @@
             this.lbl_licensedTo.TabIndex = 2;
             this.lbl_licensedTo.Text = "Hmmm";
             // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(4, 439);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(687, 178);
+            this.elementHost1.TabIndex = 3;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.viewClient1;
+            // 
             // MainGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 459);
+            this.ClientSize = new System.Drawing.Size(731, 621);
+            this.Controls.Add(this.elementHost1);
             this.Controls.Add(this.lbl_licensedTo);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
@@ -231,6 +242,8 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.Label lbl_licensedTo;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private wpfForms.ViewClient viewClient1;
     }
 }
 
