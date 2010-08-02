@@ -10,6 +10,6 @@
         <Label Content="Type Of Work" Height="28" HorizontalAlignment="Left" Margin="3,28,0,0" Name="lbl_WorkType" VerticalAlignment="Top" />
         <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,106,0,0" Name="textBlock1" Text="Submitted by:" VerticalAlignment="Top" />
         <Label Content="Submitter" Height="27" HorizontalAlignment="Left" Margin="18,119,0,0" Name="lbl_ClientTrackerUser" VerticalAlignment="Top" Width="114" />
-        <TextBox Height="101" HorizontalAlignment="Left" Margin="138,28,0,0" Name="txtBox_Notes" VerticalAlignment="Top" Width="336" />
+        <TextBox Height="101" HorizontalAlignment="Left" Margin="138,28,0,0" Name="txtBox_Notes" VerticalAlignment="Top" Width="336" IsReadOnly="True" />
     </Grid>
 </UserControl>

@@ -121,6 +121,9 @@ namespace Client_Tracker
             Enabled = true;
             StartTime = DateTime.Now;
             lbl_clientName.Text = Client.FullName;
+            
+            // start timer as soon as client loads
+            digitalDisplay1.Start();
         }
 
         /// <summary>

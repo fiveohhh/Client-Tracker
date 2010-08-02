@@ -65,7 +65,16 @@ namespace Client_Tracker
             // subscribe to activate client so we can reload a client.
             holdArea1.ActivateClient += new EventHandler(holdArea1_ActivateClient);
 
-            CheckLicense();
+            try
+            {
+                CheckLicense();
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("Unable to validate license if you purchased this software and lost your license please contact" +
+                     " the developer at andy@chiefmarley.com for a new one");
+ Environment.Exit(0);
+            }
 
             //elementHost1.Enabled = false;
 
@@ -122,7 +131,7 @@ namespace Client_Tracker
                 license = (LicenseClass)Serialization.Serializer.Deserialize(xDoc, typeof(LicenseClass));
                 ClientTrackerUser user = new ClientTrackerUser(license.FirstName, license.LastName);
                 clientActions1.SetUser(user);
-                lbl_licensedTo.Text = "Licensed to: " + license.FirstName + " " + license.LastName;
+                lbl_licensedTo.Text = "Registered to: " + license.FirstName + " " + license.LastName;
             }
             else
             {
@@ -209,6 +218,8 @@ namespace Client_Tracker
             
             // set client that we want to work on
             clientActions1.SetClient(c);
+
+            
 
             DisableClientSelection();
             getClient1.RebindCmbBoxDataSrc();
@@ -347,6 +358,12 @@ namespace Client_Tracker
         {
             LoadClients();
             getClient1.RebindCmbBoxDataSrc();
+        }
+
+        private void MainGui_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // save upon form closing
+            saveToolStripMenuItem_Click(null, null);
         }
     }
 }

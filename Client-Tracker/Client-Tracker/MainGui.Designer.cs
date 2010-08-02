@@ -211,6 +211,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainGui";
             this.Text = "Client Tracker";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainGui_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
