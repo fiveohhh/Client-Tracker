@@ -162,10 +162,20 @@ namespace Client_Tracker
 
         private void btn_submitEntry_Click(object sender, EventArgs e)
         {
-            
-           // Client.AddNote(this.txtBox_notes.Text);
-            Client.AddWorkEntry(new WorkEntry(StartTime, GetElapsedTime(), txtBox_notes.Text, User, (TypesOfWork)cmbBox_typeOfWorkDone.SelectedValue), User);
-            ResetControlData();
+            if (this.txtBox_notes.Text == "")
+            {
+                var result = MessageBox.Show("Are you sure you want to submit this entry with no notes?\r\nPress OK to submit as empty, or press cancel to add notes",
+                    "Notes field is empty", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    Client.AddWorkEntry(new WorkEntry(StartTime, GetElapsedTime(), txtBox_notes.Text, User, (TypesOfWork)cmbBox_typeOfWorkDone.SelectedValue), User);
+                    ResetControlData();
+                }
+                else
+                {
+                    // do nothing
+                }
+            }
         }
 
         private void btn_Remove_Click(object sender, EventArgs e)

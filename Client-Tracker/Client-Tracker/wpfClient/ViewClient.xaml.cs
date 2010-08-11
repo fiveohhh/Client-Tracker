@@ -36,7 +36,13 @@ namespace Client_Tracker.wpfForms
 
         private void cmbBox_workEntries_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            viewWorkEntry1.SetWorkEntry((WorkEntry)cmbBox_workEntries.SelectedItem);
+            if (cmbBox_workEntries.SelectedItem == null)
+            {
+            }
+            else
+            {
+                viewWorkEntry1.SetWorkEntry((WorkEntry)cmbBox_workEntries.SelectedItem);
+            }
         }
     } 
 }
